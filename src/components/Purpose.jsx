@@ -30,14 +30,13 @@ export default function Purpose() {
         </div>
       </div>
 
-      {/* Col 3: Silhouette Image Card */}
+      {/* Col 3: Photo placeholder — swap this for your own image once
+          ready: <img className="parallax-img" src="..." alt="..." />
+          inside the .image-frame below (drop the image-frame-empty
+          class and the placeholder span at that point). */}
       <div className="purpose-col purpose-col-image" data-reveal>
-        <div className="image-frame parallax-box">
-          <img
-            src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=90"
-            alt="Person standing before illuminated doorway in brutalist space"
-            className="parallax-img"
-          />
+        <div className="image-frame parallax-box image-frame-empty">
+          <span className="image-frame-placeholder">+ ADD PHOTO</span>
         </div>
       </div>
 
