@@ -6,7 +6,6 @@ import "./App.css";
 import "./components/Sections.css";
 
 import Preloader from "./components/Preloader";
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Purpose from "./components/Purpose";
 import Work from "./components/Work";
@@ -30,25 +29,6 @@ function App() {
     const hoverCleanups = [];
 
     const ctx = gsap.context(() => {
-      /* =========================================
-         NAVBAR ENTRANCE
-      ========================================= */
-
-      gsap.fromTo(
-        ".navbar",
-        {
-          opacity: 0,
-          y: -25,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-        }
-      );
-
-
       /* =========================================
          HERO CENTER LOGO
       ========================================= */
@@ -316,8 +296,6 @@ function App() {
         id="top"
         className="site-main"
       >
-        <Navbar />
-
         <Hero />
         <Purpose />
         <Work />
