@@ -1,0 +1,277 @@
+/* ==========================================================================
+   BELIEVE AI LABS - HERO STYLES
+   Loaded via: import "./App.css" in App.jsx
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 70%, rgba(80, 130, 165, 0.12) 0%, transparent 55%), #030507;
+  color: #ffffff;
+}
+
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 50%, transparent 25%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.8) 100%);
+  pointer-events: none;
+}
+
+.hero-top-glow {
+  position: absolute;
+  z-index: 2;
+  width: min(500px, 50vw);
+  height: 250px;
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: rgba(160, 205, 235, 0.07);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* CENTER LOGO - uses margin:auto NOT transform, so GSAP y/scale won't break centering */
+.hero-center {
+  position: absolute;
+  z-index: 20;
+  top: 18%;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+/* SIDE STATEMENTS */
+.hero-statement {
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 2;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  opacity: 0;
+}
+
+.hero-left {
+  left: 4.5%;
+  width: 260px;
+}
+
+.hero-right {
+  right: 4.5%;
+  width: 160px;
+  padding-left: 22px;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-statement p {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-accent-line {
+  width: 40px;
+  height: 1px;
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
+   DIGITAL HORIZON
+   Positioned so only the curved top arc is visible in the lower viewport.
+   Uses calc() centering — GSAP-safe (no transform conflict).
+   Target: top of arc sits at ~65% of viewport height.
+   At 1536x776: top = 776 + 420 - 700 = 496px ≈ 64%  ✓
+   ========================================================================== */
+.digital-horizon {
+  position: absolute;
+  z-index: 5;
+
+  /* Horizontal centering via calc — no CSS transform needed */
+  left: calc(50% - min(750px, 60vw));
+  bottom: -420px;
+
+  width: min(1500px, 120vw);
+  height: 700px;
+
+  border-radius: 50%;
+
+  /* Very dark interior — glow concentrated near top */
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(100, 145, 175, 0.14) 0%,
+    rgba(15, 22, 28, 0.50) 28%,
+    #020406 65%
+  );
+
+  /* Curved horizon edge via border — follows ellipse curvature */
+  border: 1px solid rgba(190, 220, 245, 0.28);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+
+  /* Outer atmospheric glow around the top arc */
+  box-shadow:
+    0 -4px 20px rgba(150, 200, 230, 0.16),
+    0 -8px 55px rgba(100, 160, 200, 0.07);
+
+  opacity: 0;
+}
+
+/* Curved glow pseudo-element — creates the luminous horizon edge */
+.digital-horizon::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 50%;
+  border-top: 1px solid rgba(200, 228, 248, 0.45);
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 -3px 18px rgba(170, 210, 238, 0.22);
+  pointer-events: none;
+}
+
+/* Hide the old straight-line glow — replaced by the curved border above */
+.horizon-glow {
+  display: none;
+}
+
+.horizon-ring {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  /* Very subtle — acts as texture, not dominant design element */
+  border-top: 1px solid rgba(160, 200, 228, 0.07);
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.ring-one {
+  top: 47%;
+  width: 85%;
+  height: 26%;
+  animation: horizonFloat 8s ease-in-out infinite;
+}
+
+.ring-two {
+  top: 49%;
+  width: 68%;
+  height: 20%;
+  animation: horizonFloat 11s ease-in-out infinite reverse;
+}
+
+.ring-three {
+  top: 51%;
+  width: 52%;
+  height: 15%;
+  animation: horizonFloat 14s ease-in-out infinite;
+}
+
+.horizon-core {
+  position: absolute;
+  top: calc(50% - 2.5px);
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(225, 242, 255, 0.9);
+  box-shadow:
+    0 0 8px rgba(220, 240, 255, 0.8),
+    0 0 25px rgba(130, 190, 230, 0.35);
+}
+
+@keyframes horizonFloat {
+  0%   { transform: translateX(-50%) translateY(0px); }
+  50%  { transform: translateX(-50%) translateY(-7px); }
+  100% { transform: translateX(-50%) translateY(0px); }
+}
+
+/* SCROLL INDICATOR - uses margin:auto NOT transform, GSAP compatible */
+.hero-scroll {
+  position: absolute;
+  z-index: 50;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.65);
+  opacity: 0;
+}
+
+.scroll-line {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.75);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%   { height: 18px; opacity: 0.35; }
+  50%  { height: 48px; opacity: 0.95; }
+  100% { height: 18px; opacity: 0.35; }
+}
+
+/* TABLET (max 900px) */
+@media (max-width: 900px) {
+  .hero-statement { font-size: 10px; letter-spacing: 0.13em; }
+  .hero-left { left: 5%; width: 210px; }
+  .hero-right { right: 5%; width: 120px; padding-left: 14px; }
+  /* Horizon: slightly smaller on tablet, keep same vertical position */
+  .digital-horizon {
+    left: calc(50% - min(550px, 55vw));
+    width: min(1100px, 110vw);
+    height: 560px;
+    bottom: -320px;
+  }
+}
+
+/* MOBILE (max 640px) */
+@media (max-width: 640px) {
+  .hero { height: auto; min-height: 100svh; padding-bottom: 60px; }
+  .hero-center { top: 90px; opacity: 1 !important; }
+  .hero-statement {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    width: 100%;
+    padding: 0 6vw;
+    font-size: 9px;
+    letter-spacing: 0.11em;
+    opacity: 1 !important;
+    border-left: none;
+  }
+  .hero-left { margin-top: 300px; }
+  .hero-right { margin-top: 16px; padding-left: 6vw; border-left: 1px solid rgba(255,255,255,0.3); }
+  /* Horizon on mobile: smaller but still visible at bottom */
+  .digital-horizon {
+    left: calc(50% - min(340px, 50vw));
+    width: min(680px, 100vw);
+    height: 400px;
+    bottom: -200px;
+  }
+  .hero-scroll { position: relative; bottom: auto; margin: 28px auto; opacity: 1 !important; }
+}
