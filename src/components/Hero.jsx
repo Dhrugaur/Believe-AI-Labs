@@ -4,17 +4,8 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
 
-      {/* Cinematic Earth-from-orbit background — entrance + parallax animated by GSAP in App.jsx */}
-      <div className="hero-bg">
-        <img
-          src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=2400&q=90"
-          alt="Earth glowing at night from orbit, city lights visible across the continents"
-          className="hero-bg-img"
-        />
-        <div className="hero-bg-overlay" />
-      </div>
-
-      {/* Vignette on top of the photo for text contrast */}
+      {/* Ambient space vignette — the SVG arc + flare below carry the "orbit"
+          visual on their own, so no photo layer competing with the text */}
       <div className="hero-atmosphere" />
 
       {/* Blue atmosphere rim glow + sunburst spike — entrance animated by GSAP in App.jsx */}

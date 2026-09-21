@@ -118,43 +118,6 @@ function App() {
 
 
       /* =========================================
-         HERO BACKGROUND PHOTO ENTRANCE
-      ========================================= */
-
-      gsap.fromTo(
-        ".hero-bg-img",
-        {
-          opacity: 0,
-          scale: 1.12,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1.8,
-          delay: 0.1,
-          ease: "power3.out",
-        }
-      );
-
-
-      /* =========================================
-         HERO BACKGROUND SCROLL PARALLAX
-      ========================================= */
-
-      gsap.to(".hero-bg-img", {
-        yPercent: 10,
-        ease: "none",
-
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-
-
-      /* =========================================
          HORIZON RIM GLOW + SUN FLARE ENTRANCE
       ========================================= */
 
