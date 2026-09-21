@@ -1,4 +1,3 @@
-import React from "react";
 import BelieveLogo from "./BelieveLogo";
 
 export default function Footer() {

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function BelieveLogo({ size = "small", showSubtitle = true, className = "" }) {
   const isLarge = size === "large";
 

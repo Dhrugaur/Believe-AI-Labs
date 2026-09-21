@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ export default function Contact() {
 
   return (
     <section className="contact-banner-section" id="contact">
-      <div className="contact-card-box">
+      <div className="contact-card-box" data-reveal>
         {/* Left text */}
         <div className="card-left">
           <h3 className="card-title">BE A PART OF WHAT'S NEXT</h3>
