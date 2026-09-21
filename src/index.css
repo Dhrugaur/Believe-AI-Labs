@@ -108,43 +108,6 @@ body {
 .char-e .bar:nth-child(2) { background: #aab0ba; }
 .char-e .bar:nth-child(3) { background: #4a4e56; }
 
-/* Bracket-style "E" (⊏): top + left + bottom bars, no middle bar —
-   used for the first two E's in BELIEVE. Same box footprint as
-   .char-e so it drops in at identical size/spacing. */
-.char-e-bracket {
-  position: relative;
-  display: inline-block;
-  margin: 0 0.05em;
-  vertical-align: middle;
-}
-
-.char-e-bracket .bracket-top,
-.char-e-bracket .bracket-bottom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  border-radius: 1px;
-}
-
-.char-e-bracket .bracket-top {
-  top: 0;
-  background: #ffffff;
-}
-
-.char-e-bracket .bracket-bottom {
-  bottom: 0;
-  background: #3c3f46;
-}
-
-.char-e-bracket .bracket-left {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background: var(--logo-metal-gradient);
-  border-radius: 1px;
-}
-
 /* Small logo (navbar / footer) */
 .logo-small .brand-wordmark {
   font-size: 15px;
@@ -158,20 +121,6 @@ body {
 
 .logo-small .char-e .bar {
   height: 2px;
-}
-
-.logo-small .char-e-bracket {
-  width: 10px;
-  height: 12px;
-}
-
-.logo-small .char-e-bracket .bracket-top,
-.logo-small .char-e-bracket .bracket-bottom {
-  height: 2px;
-}
-
-.logo-small .char-e-bracket .bracket-left {
-  width: 2px;
 }
 
 .logo-small .brand-subtitle {
@@ -198,20 +147,6 @@ body {
 
 .logo-large .char-e .bar {
   height: clamp(5px, 1vw, 14px);
-}
-
-.logo-large .char-e-bracket {
-  width: clamp(32px, 7vw, 108px);
-  height: clamp(38px, 8.6vw, 132px);
-}
-
-.logo-large .char-e-bracket .bracket-top,
-.logo-large .char-e-bracket .bracket-bottom {
-  height: clamp(5px, 1vw, 14px);
-}
-
-.logo-large .char-e-bracket .bracket-left {
-  width: clamp(5px, 1vw, 14px);
 }
 
 .logo-large .brand-subtitle {
