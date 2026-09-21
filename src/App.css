@@ -56,11 +56,16 @@
 
 /* ==========================================================================
    HORIZON RIM GLOW + SUN FLARE
-   A dramatic blue atmosphere glow arc + bright flare laid over the photo,
-   independent of the photo's own content — same curved-border technique
-   as the old drawn horizon, now used as an accent rather than the subject.
-   Both are positioned from the container's BOTTOM edge so the flare stays
-   locked to the arc's peak across breakpoints without recalculating.
+   A dramatic lit ring arc + bright flare laid over the photo, independent
+   of the photo's own content. The arc is an SVG ellipse stroke (gradient +
+   layered blur, defined inline in Hero.jsx) so it can carry a lengthwise
+   brightness gradient and a sense of physical thickness — a flat CSS
+   border can only ever be a uniform hairline. This div-shaped positioning
+   box is unchanged from the old technique: draw the FULL ellipse and let
+   the hero's overflow:hidden crop away the invisible lower portion, so only
+   the top cap shows. Both glow + flare are positioned from the container's
+   BOTTOM edge so the flare stays locked to a point on the arc across
+   breakpoints without recalculating.
    ========================================================================== */
 .hero-horizon-glow {
   position: absolute;
@@ -69,17 +74,7 @@
   bottom: -420px;
   width: min(1500px, 120vw);
   height: 700px;
-  border-radius: 50%;
-  border: 1.5px solid transparent;
-  /* crisper, brighter line so it reads as a lit rim rather than a haze */
-  border-top-color: rgba(210, 235, 255, 0.8);
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  box-shadow:
-    0 -1px 8px rgba(200, 230, 255, 0.6),
-    0 -6px 34px rgba(110, 175, 235, 0.3),
-    0 -20px 100px rgba(60, 130, 210, 0.14);
+  overflow: visible;
   pointer-events: none;
 }
 
