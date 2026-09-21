@@ -58,7 +58,7 @@ body {
 .brand-wordmark {
   display: inline-flex;
   align-items: center;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--text-primary);
   letter-spacing: 0.18em;
 }
@@ -89,7 +89,7 @@ body {
 }
 
 .logo-small .char-e .bar {
-  height: 1.5px;
+  height: 2px;
 }
 
 .logo-small .brand-subtitle {
@@ -101,21 +101,21 @@ body {
   font-weight: 400;
 }
 
-/* Large logo (preloader) */
+/* Large logo (preloader, hero) */
 .logo-large .brand-wordmark {
-  font-size: clamp(48px, 9vw, 130px);
-  letter-spacing: 0.22em;
-  font-weight: 200;
+  font-size: clamp(52px, 11.5vw, 178px);
+  letter-spacing: 0.15em;
+  font-weight: 600;
   line-height: 1;
 }
 
 .logo-large .char-e {
-  width: clamp(30px, 5.5vw, 80px);
-  height: clamp(36px, 6.8vw, 98px);
+  width: clamp(32px, 7vw, 108px);
+  height: clamp(38px, 8.6vw, 132px);
 }
 
 .logo-large .char-e .bar {
-  height: clamp(4px, 0.75vw, 10px);
+  height: clamp(5px, 1vw, 14px);
 }
 
 .logo-large .brand-subtitle {

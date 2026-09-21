@@ -118,32 +118,30 @@ function App() {
 
 
       /* =========================================
-         DIGITAL HORIZON ENTRANCE
+         HERO BACKGROUND PHOTO ENTRANCE
       ========================================= */
 
       gsap.fromTo(
-        ".digital-horizon",
+        ".hero-bg-img",
         {
           opacity: 0,
-          scale: 0.88,
-          y: 60,
+          scale: 1.12,
         },
         {
           opacity: 1,
           scale: 1,
-          y: 0,
           duration: 1.8,
-          delay: 0.25,
+          delay: 0.1,
           ease: "power3.out",
         }
       );
 
 
       /* =========================================
-         HORIZON SCROLL PARALLAX
+         HERO BACKGROUND SCROLL PARALLAX
       ========================================= */
 
-      gsap.to(".digital-horizon", {
+      gsap.to(".hero-bg-img", {
         yPercent: 10,
         ease: "none",
 
@@ -154,6 +152,26 @@ function App() {
           scrub: 1,
         },
       });
+
+
+      /* =========================================
+         TOP-LEFT MINI BRAND
+      ========================================= */
+
+      gsap.fromTo(
+        ".hero-mini-brand",
+        {
+          opacity: 0,
+          y: -10,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          delay: 0.4,
+          ease: "power2.out",
+        }
+      );
 
 
       /* =========================================
@@ -174,20 +192,6 @@ function App() {
           ease: "power2.out",
         }
       );
-
-
-      /* =========================================
-         HERO ATMOSPHERE
-      ========================================= */
-
-      gsap.to(".hero-top-glow", {
-        scale: 1.15,
-        opacity: 0.75,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
 
 
       /* =========================================
