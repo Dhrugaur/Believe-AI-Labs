@@ -46,13 +46,14 @@
   margin-top: 28px;
 }
 
-/* Cinematic image frame used inside grid columns */
+/* Cinematic image frame used inside grid columns.
+   Gradient acts as a graceful fallback while the image loads or if it fails. */
 .image-frame {
   position: relative;
   overflow: hidden;
   border-radius: 6px;
   border: 1px solid var(--border-color);
-  background: #000;
+  background: radial-gradient(ellipse at 30% 20%, rgba(100, 145, 175, 0.16) 0%, transparent 60%), #0a0b0d;
   width: 100%;
   height: 100%;
   min-height: 260px;
@@ -61,6 +62,7 @@
 .parallax-box {
   position: relative;
   overflow: hidden;
+  background: radial-gradient(ellipse at 30% 20%, rgba(100, 145, 175, 0.16) 0%, transparent 60%), #0a0b0d;
 }
 
 .parallax-box .parallax-img {
