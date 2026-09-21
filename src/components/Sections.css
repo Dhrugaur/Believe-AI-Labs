@@ -74,6 +74,24 @@
   display: block;
 }
 
+/* Reserved slot for a photo not added yet — remove this class and the
+   placeholder span once a real <img class="parallax-img"> is dropped in. */
+.image-frame-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.image-frame-placeholder {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
 /* Generic multi-column section row wrapper (Purpose / Work / Belief) */
 .section-row {
   position: relative;
