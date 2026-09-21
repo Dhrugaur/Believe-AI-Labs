@@ -155,6 +155,38 @@ function App() {
 
 
       /* =========================================
+         HORIZON RIM GLOW + SUN FLARE ENTRANCE
+      ========================================= */
+
+      gsap.fromTo(
+        [".hero-horizon-glow", ".hero-sun-flare"],
+        {
+          opacity: 0,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.8,
+          delay: 0.35,
+          ease: "power3.out",
+        }
+      );
+
+      gsap.to([".hero-horizon-glow", ".hero-sun-flare"], {
+        yPercent: 8,
+        ease: "none",
+
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+
+      /* =========================================
          TOP-LEFT MINI BRAND
       ========================================= */
 

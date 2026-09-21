@@ -17,6 +17,10 @@ export default function Hero() {
       {/* Vignette on top of the photo for text contrast */}
       <div className="hero-atmosphere" />
 
+      {/* Blue atmosphere rim glow + sunburst — entrance animated by GSAP in App.jsx */}
+      <div className="hero-horizon-glow" />
+      <div className="hero-sun-flare" />
+
       {/* Persistent top-left brand lockup — entrance animated by GSAP in App.jsx */}
       <div className="hero-mini-brand">
         <svg className="mini-brand-arc" viewBox="0 0 64 28" aria-hidden="true">
