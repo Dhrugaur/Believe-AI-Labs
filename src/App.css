@@ -82,23 +82,26 @@
   pointer-events: none;
 }
 
-/* left/bottom use calc() offsets rather than transform:translate(-50%,50%)
+/* --flare-size/--flare-peak drive both the size and the centering, so the
+   spike's visual center always lands on the horizon-glow arc's peak.
+   left/bottom use calc() offsets rather than transform:translate(-50%,50%)
    for centering — GSAP takes over the transform property for this element
    (scale + scroll parallax), so a CSS transform here would get overwritten */
 .hero-sun-flare {
+  --flare-size: clamp(90px, 10vw, 170px);
+  --flare-peak: 278px;
   position: absolute;
   z-index: 4;
-  left: calc(50% - 2px);
-  bottom: 276px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow:
-    0 0 24px 8px rgba(255, 255, 255, 0.95),
-    0 0 70px 24px rgba(190, 225, 255, 0.55),
-    0 0 160px 60px rgba(120, 180, 255, 0.28);
+  width: var(--flare-size);
+  height: var(--flare-size);
+  left: calc(50% - (var(--flare-size) / 2));
+  bottom: calc(var(--flare-peak) - (var(--flare-size) / 2));
+  overflow: visible;
   pointer-events: none;
+  filter:
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 34px rgba(170, 210, 255, 0.55))
+    drop-shadow(0 0 80px rgba(110, 170, 240, 0.3));
 }
 
 /* ==========================================================================
@@ -239,7 +242,7 @@
     height: 560px;
     bottom: -320px;
   }
-  .hero-sun-flare { bottom: 236px; }
+  .hero-sun-flare { --flare-size: clamp(70px, 12vw, 120px); --flare-peak: 238px; }
 }
 
 /* MOBILE (max 640px) */
@@ -271,6 +274,6 @@
     height: 400px;
     bottom: -200px;
   }
-  .hero-sun-flare { bottom: 196px; }
+  .hero-sun-flare { --flare-size: 64px; --flare-peak: 198px; }
   .hero-scroll { position: relative; bottom: auto; margin: 28px auto; opacity: 1 !important; }
 }

@@ -17,9 +17,33 @@ export default function Hero() {
       {/* Vignette on top of the photo for text contrast */}
       <div className="hero-atmosphere" />
 
-      {/* Blue atmosphere rim glow + sunburst — entrance animated by GSAP in App.jsx */}
+      {/* Blue atmosphere rim glow + sunburst spike — entrance animated by GSAP in App.jsx */}
       <div className="hero-horizon-glow" />
-      <div className="hero-sun-flare" />
+      <svg className="hero-sun-flare" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <radialGradient id="flareBloom" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+            <stop offset="30%" stopColor="#dceeff" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#8fc4ff" stopOpacity="0" />
+          </radialGradient>
+          <filter id="flareSoften" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="0.8" />
+          </filter>
+        </defs>
+
+        {/* ambient bloom behind the spikes */}
+        <circle cx="50" cy="50" r="42" fill="url(#flareBloom)" />
+
+        {/* four-point diffraction spike */}
+        <polygon
+          points="99,50 58,58 50,99 42,58 1,50 42,42 50,1 58,42"
+          fill="#ffffff"
+          filter="url(#flareSoften)"
+        />
+
+        {/* bright core */}
+        <circle cx="50" cy="50" r="3" fill="#ffffff" />
+      </svg>
 
       {/* Persistent top-left brand lockup — entrance animated by GSAP in App.jsx */}
       <div className="hero-mini-brand">
