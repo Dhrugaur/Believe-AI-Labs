@@ -221,7 +221,7 @@
 .work-section {
   background: #0b0c0f;
   display: grid;
-  grid-template-columns: 0.9fr 1.15fr 0.65fr;
+  grid-template-columns: 1.1fr 0.8fr 0.7fr;
   gap: 5vw;
   align-items: center;
 }
@@ -236,7 +236,7 @@
 }
 
 .work-col-center .image-frame {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 6;
   min-height: 0;
 }
 
