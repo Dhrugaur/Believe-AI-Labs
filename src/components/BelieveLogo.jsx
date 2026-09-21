@@ -5,17 +5,17 @@ export default function BelieveLogo({ size = "small", showSubtitle = true, class
     <div className={`believe-brand-logo ${isLarge ? "logo-large" : "logo-small"} ${className}`}>
       <div className="brand-wordmark">
         <span className="char">B</span>
-        <span className="char-e">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+        <span className="char-e-bracket">
+          <span className="bracket-top"></span>
+          <span className="bracket-left"></span>
+          <span className="bracket-bottom"></span>
         </span>
         <span className="char">L</span>
         <span className="char">I</span>
-        <span className="char-e">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+        <span className="char-e-bracket">
+          <span className="bracket-top"></span>
+          <span className="bracket-left"></span>
+          <span className="bracket-bottom"></span>
         </span>
         <span className="char">V</span>
         <span className="char-e">
