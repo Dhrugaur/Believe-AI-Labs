@@ -187,6 +187,38 @@ function App() {
 
 
       /* =========================================
+         SUN FLARE + ARC — idle twinkle loop
+         Starts once the entrance settles (delay > entrance's
+         0.35s delay + 1.8s duration) so the two never fight
+         over the same scale/opacity properties.
+      ========================================= */
+
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (!prefersReducedMotion) {
+        gsap.to(".hero-sun-flare", {
+          scale: 1.16,
+          duration: 2.4,
+          delay: 2.2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+
+        gsap.to(".hero-horizon-glow", {
+          opacity: 0.78,
+          duration: 3.6,
+          delay: 2.6,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+
+
+      /* =========================================
          TOP-LEFT MINI BRAND
       ========================================= */
 
