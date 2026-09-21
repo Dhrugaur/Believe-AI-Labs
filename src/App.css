@@ -87,14 +87,10 @@
 }
 
 .mini-brand-arc {
-  width: 40px;
-  height: 18px;
-  color: rgba(255, 255, 255, 0.55);
+  width: 66px;
+  height: 33px;
+  overflow: visible;
   margin-bottom: 2px;
-}
-
-.mini-brand-arc circle {
-  color: #ffffff;
 }
 
 .mini-brand-tagline {
