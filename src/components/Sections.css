@@ -46,13 +46,14 @@
   margin-top: 28px;
 }
 
-/* Cinematic image frame used inside grid columns */
+/* Cinematic image frame used inside grid columns.
+   Gradient acts as a graceful fallback while the image loads or if it fails. */
 .image-frame {
   position: relative;
   overflow: hidden;
   border-radius: 6px;
   border: 1px solid var(--border-color);
-  background: #000;
+  background: radial-gradient(ellipse at 30% 20%, rgba(100, 145, 175, 0.16) 0%, transparent 60%), #0a0b0d;
   width: 100%;
   height: 100%;
   min-height: 260px;
@@ -61,6 +62,7 @@
 .parallax-box {
   position: relative;
   overflow: hidden;
+  background: radial-gradient(ellipse at 30% 20%, rgba(100, 145, 175, 0.16) 0%, transparent 60%), #0a0b0d;
 }
 
 .parallax-box .parallax-img {
@@ -70,6 +72,24 @@
   height: 118%;
   object-fit: cover;
   display: block;
+}
+
+/* Reserved slot for a photo not added yet — remove this class and the
+   placeholder span once a real <img class="parallax-img"> is dropped in. */
+.image-frame-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.image-frame-placeholder {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 /* Generic multi-column section row wrapper (Purpose / Work / Belief) */
@@ -201,7 +221,7 @@
 .work-section {
   background: #0b0c0f;
   display: grid;
-  grid-template-columns: 0.9fr 1.15fr 0.65fr;
+  grid-template-columns: 1.1fr 0.8fr 0.7fr;
   gap: 5vw;
   align-items: center;
 }
@@ -216,7 +236,7 @@
 }
 
 .work-col-center .image-frame {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 6;
   min-height: 0;
 }
 

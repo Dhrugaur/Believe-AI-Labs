@@ -6,7 +6,6 @@ import "./App.css";
 import "./components/Sections.css";
 
 import Preloader from "./components/Preloader";
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Purpose from "./components/Purpose";
 import Work from "./components/Work";
@@ -27,26 +26,9 @@ function App() {
   useEffect(() => {
     if (loading) return;
 
+    const hoverCleanups = [];
+
     const ctx = gsap.context(() => {
-      /* =========================================
-         NAVBAR ENTRANCE
-      ========================================= */
-
-      gsap.fromTo(
-        ".navbar",
-        {
-          opacity: 0,
-          y: -25,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-        }
-      );
-
-
       /* =========================================
          HERO CENTER LOGO
       ========================================= */
@@ -70,73 +52,72 @@ function App() {
 
 
       /* =========================================
-         LEFT STATEMENT
+         LEFT STATEMENT — lines reveal one by one
       ========================================= */
 
       gsap.fromTo(
-        ".hero-left",
+        ".hero-left > *",
         {
           opacity: 0,
-          x: -35,
+          x: -14,
+          y: 8,
         },
         {
           opacity: 1,
           x: 0,
-          duration: 1,
+          y: 0,
+          duration: 0.7,
           delay: 0.5,
-          ease: "power3.out",
+          stagger: 0.12,
+          ease: "power2.out",
         }
       );
 
 
       /* =========================================
-         RIGHT STATEMENT
+         RIGHT STATEMENT — lines reveal one by one
       ========================================= */
 
       gsap.fromTo(
-        ".hero-right",
+        ".hero-right > *",
         {
           opacity: 0,
-          x: 35,
+          x: 14,
+          y: 8,
         },
         {
           opacity: 1,
           x: 0,
-          duration: 1,
+          y: 0,
+          duration: 0.7,
           delay: 0.65,
-          ease: "power3.out",
+          stagger: 0.12,
+          ease: "power2.out",
         }
       );
 
 
       /* =========================================
-         DIGITAL HORIZON ENTRANCE
+         HORIZON RIM GLOW + SUN FLARE ENTRANCE
       ========================================= */
 
       gsap.fromTo(
-        ".digital-horizon",
+        [".hero-horizon-glow", ".hero-sun-flare"],
         {
           opacity: 0,
-          scale: 0.88,
-          y: 60,
+          scale: 0.9,
         },
         {
           opacity: 1,
           scale: 1,
-          y: 0,
           duration: 1.8,
-          delay: 0.25,
+          delay: 0.35,
           ease: "power3.out",
         }
       );
 
-
-      /* =========================================
-         HORIZON SCROLL PARALLAX
-      ========================================= */
-
-      gsap.to(".digital-horizon", {
-        yPercent: 10,
+      gsap.to([".hero-horizon-glow", ".hero-sun-flare"], {
+        yPercent: 8,
         ease: "none",
 
         scrollTrigger: {
@@ -146,6 +127,38 @@ function App() {
           scrub: 1,
         },
       });
+
+
+      /* =========================================
+         SUN FLARE + ARC — idle twinkle loop
+         Starts once the entrance settles (delay > entrance's
+         0.35s delay + 1.8s duration) so the two never fight
+         over the same scale/opacity properties.
+      ========================================= */
+
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (!prefersReducedMotion) {
+        gsap.to(".hero-sun-flare", {
+          scale: 1.16,
+          duration: 2.4,
+          delay: 2.2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+
+        gsap.to(".hero-horizon-glow", {
+          opacity: 0.78,
+          duration: 3.6,
+          delay: 2.6,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
 
 
       /* =========================================
@@ -166,20 +179,6 @@ function App() {
           ease: "power2.out",
         }
       );
-
-
-      /* =========================================
-         HERO ATMOSPHERE
-      ========================================= */
-
-      gsap.to(".hero-top-glow", {
-        scale: 1.15,
-        opacity: 0.75,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
 
 
       /* =========================================
@@ -248,9 +247,36 @@ function App() {
         );
       });
 
+
+      /* =========================================
+         IMAGE HOVER SCALE (1.05x)
+         Applied via GSAP (not CSS :hover) so it composes
+         cleanly with the scroll-driven parallax transform
+         already running on the same element.
+      ========================================= */
+
+      gsap.utils.toArray(".parallax-box").forEach((frame) => {
+        const img = frame.querySelector(".parallax-img");
+        if (!img) return;
+
+        const onEnter = () =>
+          gsap.to(img, { scale: 1.05, duration: 0.6, ease: "power2.out" });
+        const onLeave = () =>
+          gsap.to(img, { scale: 1, duration: 0.6, ease: "power2.out" });
+
+        frame.addEventListener("mouseenter", onEnter);
+        frame.addEventListener("mouseleave", onLeave);
+
+        hoverCleanups.push(() => {
+          frame.removeEventListener("mouseenter", onEnter);
+          frame.removeEventListener("mouseleave", onLeave);
+        });
+      });
+
     }, appRef);
 
     return () => {
+      hoverCleanups.forEach((cleanup) => cleanup());
       ctx.revert();
     };
   }, [loading]);
@@ -270,8 +296,6 @@ function App() {
         id="top"
         className="site-main"
       >
-        <Navbar />
-
         <Hero />
         <Purpose />
         <Work />

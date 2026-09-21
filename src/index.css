@@ -10,6 +10,8 @@
   --text-secondary: #9a9da6;
   --text-muted: #6b6e77;
   --font-main: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Metallic/chrome sheen used on the BELIEVE wordmark everywhere it appears */
+  --logo-metal-gradient: linear-gradient(180deg, #ffffff 0%, #e7e9ed 28%, #b9bfc8 55%, #71767f 80%, #3c3f46 100%);
 }
 
 * {
@@ -58,9 +60,30 @@ body {
 .brand-wordmark {
   display: inline-flex;
   align-items: center;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--text-primary);
   letter-spacing: 0.18em;
+}
+
+/* Metallic sheen: bright at the top of each glyph, fading to dark at the
+   bottom. Applied per-letter (not on .brand-wordmark) because background
+   isn't an inherited property — background-clip:text needs the gradient
+   declared on the element that actually holds the text. color/-webkit-
+   text-fill-color:transparent is set only inside the @supports guard so
+   browsers without background-clip:text keep showing solid text instead
+   of nothing. */
+.char {
+  color: var(--text-primary);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .char {
+    background: var(--logo-metal-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .char-e {
@@ -72,10 +95,18 @@ body {
 }
 
 .char-e .bar {
-  background-color: currentColor;
   width: 100%;
   border-radius: 1px;
+  background: var(--text-primary);
 }
+
+/* Each bar sits at a different height within the glyph (top/middle/bottom
+   via flex space-between), so it samples a flat tone from the same
+   gradient used on the letters instead of one gradient smeared across
+   each individually — keeps the "E" reading as part of the same sheen. */
+.char-e .bar:nth-child(1) { background: #ffffff; }
+.char-e .bar:nth-child(2) { background: #aab0ba; }
+.char-e .bar:nth-child(3) { background: #4a4e56; }
 
 /* Small logo (navbar / footer) */
 .logo-small .brand-wordmark {
@@ -89,7 +120,7 @@ body {
 }
 
 .logo-small .char-e .bar {
-  height: 1.5px;
+  height: 2px;
 }
 
 .logo-small .brand-subtitle {
@@ -101,21 +132,21 @@ body {
   font-weight: 400;
 }
 
-/* Large logo (preloader) */
+/* Large logo (preloader, hero) */
 .logo-large .brand-wordmark {
-  font-size: clamp(48px, 9vw, 130px);
-  letter-spacing: 0.22em;
-  font-weight: 200;
+  font-size: clamp(52px, 11.5vw, 178px);
+  letter-spacing: 0.15em;
+  font-weight: 600;
   line-height: 1;
 }
 
 .logo-large .char-e {
-  width: clamp(30px, 5.5vw, 80px);
-  height: clamp(36px, 6.8vw, 98px);
+  width: clamp(32px, 7vw, 108px);
+  height: clamp(38px, 8.6vw, 132px);
 }
 
 .logo-large .char-e .bar {
-  height: clamp(4px, 0.75vw, 10px);
+  height: clamp(5px, 1vw, 14px);
 }
 
 .logo-large .brand-subtitle {

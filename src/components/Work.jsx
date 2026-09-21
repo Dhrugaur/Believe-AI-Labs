@@ -20,14 +20,13 @@ export default function Work() {
         </a>
       </div>
 
-      {/* Col 2: Panoramic Mountain Window Silhouette Image */}
+      {/* Col 2: Photo placeholder — swap this for your own image once
+          ready: <img className="parallax-img" src="..." alt="..." />
+          inside the .image-frame below (drop the image-frame-empty
+          class and the placeholder span at that point). */}
       <div className="work-col work-col-center" data-reveal>
-        <div className="image-frame parallax-box">
-          <img
-            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=90"
-            alt="Person standing at panoramic window looking at mountains"
-            className="parallax-img"
-          />
+        <div className="image-frame parallax-box image-frame-empty">
+          <span className="image-frame-placeholder">+ ADD PHOTO</span>
         </div>
       </div>
 
