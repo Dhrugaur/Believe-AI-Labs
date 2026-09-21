@@ -69,39 +69,6 @@
     drop-shadow(0 0 80px rgba(110, 170, 240, 0.3));
 }
 
-/* ==========================================================================
-   PERSISTENT TOP-LEFT MINI BRAND LOCKUP
-   Sits at the same position the scrolled navbar brand fades into, so the
-   handoff between the two feels continuous rather than duplicated.
-   ========================================================================== */
-.hero-mini-brand {
-  position: absolute;
-  z-index: 22;
-  top: 28px;
-  left: 4vw;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  opacity: 0;
-}
-
-.mini-brand-arc {
-  width: 66px;
-  height: 33px;
-  overflow: visible;
-  margin-bottom: 2px;
-}
-
-.mini-brand-tagline {
-  font-size: 8px;
-  font-weight: 400;
-  letter-spacing: 0.42em;
-  color: var(--text-muted);
-  margin-left: 1px;
-  text-transform: uppercase;
-}
-
 /* CENTER LOGO - uses margin:auto NOT transform, so GSAP y/scale won't break centering */
 .hero-center {
   position: absolute;
@@ -213,8 +180,6 @@
 @media (max-width: 640px) {
   .hero { height: auto; min-height: 100svh; padding-bottom: 60px; }
   .hero-center { top: 90px; opacity: 1 !important; }
-  /* Nav links already occupy this row at mobile widths — avoid collision */
-  .hero-mini-brand { display: none; }
   .hero-statement {
     position: relative;
     top: auto; left: auto; right: auto;

@@ -77,39 +77,6 @@ export default function Hero() {
         <circle cx="50" cy="50" r="2.4" fill="#ffffff" />
       </svg>
 
-      {/* Persistent top-left brand lockup — entrance animated by GSAP in App.jsx */}
-      <div className="hero-mini-brand">
-        <svg className="mini-brand-arc" viewBox="0 0 140 70" aria-hidden="true">
-          <defs>
-            <linearGradient id="miniArcGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(160,180,200,0.15)" />
-              <stop offset="50%" stopColor="rgba(190,210,230,0.55)" />
-              <stop offset="80%" stopColor="#ffffff" />
-            </linearGradient>
-          </defs>
-          {/* same dim-to-bright rising arc + diffraction-spike language as
-              the main hero's horizon glow + sunburst, shrunk to icon scale.
-              Kept deliberately simple (no blur/bloom) since those soften
-              into an unreadable smudge at this size. */}
-          <path
-            d="M6 64 C 14 24, 58 6, 106 22"
-            fill="none"
-            stroke="url(#miniArcGrad)"
-            strokeWidth="2.6"
-            strokeLinecap="round"
-          />
-          <g transform="translate(110,20)">
-            <polygon
-              points="12,0 4,4 0,12 -4,4 -12,0 -4,-4 0,-12 4,-4"
-              fill="#ffffff"
-            />
-            <circle r="1.8" fill="#ffffff" />
-          </g>
-        </svg>
-        <BelieveLogo size="small" showSubtitle={true} />
-        <span className="mini-brand-tagline">IDEAS TO IMPACT</span>
-      </div>
-
       {/* CENTER LOGO — entrance animated by GSAP in App.jsx */}
       <div className="hero-center">
         <BelieveLogo
