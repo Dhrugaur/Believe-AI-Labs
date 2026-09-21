@@ -32,17 +32,17 @@ export default function Hero() {
         </defs>
 
         {/* ambient bloom behind the spikes */}
-        <circle cx="50" cy="50" r="42" fill="url(#flareBloom)" />
+        <circle cx="50" cy="50" r="36" fill="url(#flareBloom)" />
 
-        {/* four-point diffraction spike */}
+        {/* four-point diffraction spike — thin, needle-like blades, not a chunky shuriken */}
         <polygon
-          points="99,50 58,58 50,99 42,58 1,50 42,42 50,1 58,42"
+          points="99,50 55.7,55.7 50,99 44.3,55.7 1,50 44.3,44.3 50,1 55.7,44.3"
           fill="#ffffff"
           filter="url(#flareSoften)"
         />
 
         {/* bright core */}
-        <circle cx="50" cy="50" r="3" fill="#ffffff" />
+        <circle cx="50" cy="50" r="2.4" fill="#ffffff" />
       </svg>
 
       {/* Persistent top-left brand lockup — entrance animated by GSAP in App.jsx */}

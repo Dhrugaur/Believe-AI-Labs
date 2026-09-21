@@ -71,30 +71,33 @@
   height: 700px;
   border-radius: 50%;
   border: 1.5px solid transparent;
-  border-top-color: rgba(140, 200, 255, 0.65);
+  /* crisper, brighter line so it reads as a lit rim rather than a haze */
+  border-top-color: rgba(210, 235, 255, 0.8);
   border-left-color: transparent;
   border-right-color: transparent;
   border-bottom-color: transparent;
   box-shadow:
-    0 -2px 14px rgba(140, 200, 255, 0.55),
-    0 -10px 60px rgba(90, 160, 230, 0.35),
-    0 -30px 150px rgba(60, 130, 210, 0.18);
+    0 -1px 8px rgba(200, 230, 255, 0.6),
+    0 -6px 34px rgba(110, 175, 235, 0.3),
+    0 -20px 100px rgba(60, 130, 210, 0.14);
   pointer-events: none;
 }
 
-/* --flare-size/--flare-peak drive both the size and the centering, so the
-   spike's visual center always lands on the horizon-glow arc's peak.
+/* --flare-size/--flare-peak/--flare-offset-x drive size + position, so the
+   spike's visual center always lands ON the horizon-glow arc, offset to one
+   side rather than sitting at its dead-center peak.
    left/bottom use calc() offsets rather than transform:translate(-50%,50%)
    for centering — GSAP takes over the transform property for this element
    (scale + scroll parallax), so a CSS transform here would get overwritten */
 .hero-sun-flare {
-  --flare-size: clamp(90px, 10vw, 170px);
-  --flare-peak: 278px;
+  --flare-size: clamp(48px, 5.5vw, 88px);
+  --flare-peak: 248px;
+  --flare-offset-x: 315px;
   position: absolute;
   z-index: 4;
   width: var(--flare-size);
   height: var(--flare-size);
-  left: calc(50% - (var(--flare-size) / 2));
+  left: calc(50% - (var(--flare-size) / 2) + var(--flare-offset-x));
   bottom: calc(var(--flare-peak) - (var(--flare-size) / 2));
   overflow: visible;
   pointer-events: none;
@@ -242,7 +245,11 @@
     height: 560px;
     bottom: -320px;
   }
-  .hero-sun-flare { --flare-size: clamp(70px, 12vw, 120px); --flare-peak: 238px; }
+  .hero-sun-flare {
+    --flare-size: clamp(36px, 6vw, 60px);
+    --flare-peak: 214px;
+    --flare-offset-x: clamp(90px, 24vw, 231px);
+  }
 }
 
 /* MOBILE (max 640px) */
@@ -274,6 +281,10 @@
     height: 400px;
     bottom: -200px;
   }
-  .hero-sun-flare { --flare-size: 64px; --flare-peak: 198px; }
+  .hero-sun-flare {
+    --flare-size: 32px;
+    --flare-peak: 182px;
+    --flare-offset-x: clamp(50px, 20vw, 90px);
+  }
   .hero-scroll { position: relative; bottom: auto; margin: 28px auto; opacity: 1 !important; }
 }
