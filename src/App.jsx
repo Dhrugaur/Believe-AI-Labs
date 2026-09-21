@@ -27,6 +27,8 @@ function App() {
   useEffect(() => {
     if (loading) return;
 
+    const hoverCleanups = [];
+
     const ctx = gsap.context(() => {
       /* =========================================
          NAVBAR ENTRANCE
@@ -70,41 +72,47 @@ function App() {
 
 
       /* =========================================
-         LEFT STATEMENT
+         LEFT STATEMENT — lines reveal one by one
       ========================================= */
 
       gsap.fromTo(
-        ".hero-left",
+        ".hero-left > *",
         {
           opacity: 0,
-          x: -35,
+          x: -14,
+          y: 8,
         },
         {
           opacity: 1,
           x: 0,
-          duration: 1,
+          y: 0,
+          duration: 0.7,
           delay: 0.5,
-          ease: "power3.out",
+          stagger: 0.12,
+          ease: "power2.out",
         }
       );
 
 
       /* =========================================
-         RIGHT STATEMENT
+         RIGHT STATEMENT — lines reveal one by one
       ========================================= */
 
       gsap.fromTo(
-        ".hero-right",
+        ".hero-right > *",
         {
           opacity: 0,
-          x: 35,
+          x: 14,
+          y: 8,
         },
         {
           opacity: 1,
           x: 0,
-          duration: 1,
+          y: 0,
+          duration: 0.7,
           delay: 0.65,
-          ease: "power3.out",
+          stagger: 0.12,
+          ease: "power2.out",
         }
       );
 
@@ -248,9 +256,36 @@ function App() {
         );
       });
 
+
+      /* =========================================
+         IMAGE HOVER SCALE (1.05x)
+         Applied via GSAP (not CSS :hover) so it composes
+         cleanly with the scroll-driven parallax transform
+         already running on the same element.
+      ========================================= */
+
+      gsap.utils.toArray(".parallax-box").forEach((frame) => {
+        const img = frame.querySelector(".parallax-img");
+        if (!img) return;
+
+        const onEnter = () =>
+          gsap.to(img, { scale: 1.05, duration: 0.6, ease: "power2.out" });
+        const onLeave = () =>
+          gsap.to(img, { scale: 1, duration: 0.6, ease: "power2.out" });
+
+        frame.addEventListener("mouseenter", onEnter);
+        frame.addEventListener("mouseleave", onLeave);
+
+        hoverCleanups.push(() => {
+          frame.removeEventListener("mouseenter", onEnter);
+          frame.removeEventListener("mouseleave", onLeave);
+        });
+      });
+
     }, appRef);
 
     return () => {
+      hoverCleanups.forEach((cleanup) => cleanup());
       ctx.revert();
     };
   }, [loading]);

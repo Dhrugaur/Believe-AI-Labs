@@ -61,6 +61,11 @@
   font-weight: 400;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.82);
+}
+
+/* Lines reveal individually (staggered by GSAP in App.jsx), not as one block */
+.hero-statement p,
+.hero-statement .hero-accent-line {
   opacity: 0;
 }
 
