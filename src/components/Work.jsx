@@ -1,10 +1,8 @@
-import React from "react";
-
 export default function Work() {
   return (
     <section className="section-row work-section" id="work">
       {/* Col 1: Text & CTA */}
-      <div className="work-col work-col-left">
+      <div className="work-col work-col-left" data-reveal>
         <span className="section-label">HOW WE WORK</span>
         <h2 className="section-title">
           IDEAS TO<br />
@@ -16,14 +14,14 @@ export default function Work() {
           into real-world impact. Our process is simple — explore, validate, build and scale.
         </p>
 
-        <a href="#impact" className="cta-sweep-button">
+        <a href="#labs" className="cta-sweep-button">
           <span>EXPLORE OUR LABS</span>
           <span className="arrow">→</span>
         </a>
       </div>
 
       {/* Col 2: Panoramic Mountain Window Silhouette Image */}
-      <div className="work-col work-col-center">
+      <div className="work-col work-col-center" data-reveal>
         <div className="image-frame parallax-box">
           <img
             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=90"
@@ -34,7 +32,7 @@ export default function Work() {
       </div>
 
       {/* Col 3: Numbered Process Items */}
-      <div className="work-col work-col-right">
+      <div className="work-col work-col-right" data-reveal>
         <div className="process-list cascade-list">
           <div className="process-item-row">
             <span className="process-num">01</span>

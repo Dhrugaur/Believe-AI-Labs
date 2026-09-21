@@ -3,10 +3,20 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./App.css";
+import "./components/Sections.css";
 
 import Preloader from "./components/Preloader";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Purpose from "./components/Purpose";
+import Work from "./components/Work";
+import Labs from "./components/Labs";
+import Belief from "./components/Belief";
+import Presence from "./components/Presence";
+import Impact from "./components/Impact";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import BottomBar from "./components/BottomBar";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -171,6 +181,73 @@ function App() {
         ease: "sine.inOut",
       });
 
+
+      /* =========================================
+         SECTION SCROLL REVEALS
+      ========================================= */
+
+      gsap.utils.toArray("[data-reveal]").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 46 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+            },
+          }
+        );
+      });
+
+
+      /* =========================================
+         CASCADE LIST STAGGER (process / values)
+      ========================================= */
+
+      gsap.utils.toArray(".cascade-list").forEach((list) => {
+        gsap.fromTo(
+          list.children,
+          { opacity: 0, y: 22 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: list,
+              start: "top 88%",
+            },
+          }
+        );
+      });
+
+
+      /* =========================================
+         IMAGE PARALLAX (section imagery)
+      ========================================= */
+
+      gsap.utils.toArray(".parallax-box .parallax-img").forEach((img) => {
+        gsap.fromTo(
+          img,
+          { yPercent: -10 },
+          {
+            yPercent: 10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: img.closest(".parallax-box"),
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          }
+        );
+      });
+
     }, appRef);
 
     return () => {
@@ -196,7 +273,17 @@ function App() {
         <Navbar />
 
         <Hero />
+        <Purpose />
+        <Work />
+        <Labs />
+        <Belief />
+        <Presence />
+        <Impact />
+        <Contact />
+        <Footer />
       </main>
+
+      {!loading && <BottomBar />}
 
     </div>
   );

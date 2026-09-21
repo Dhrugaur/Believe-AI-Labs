@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BelieveLogo from "./BelieveLogo";
 
 export default function Navbar() {
@@ -10,7 +10,7 @@ export default function Navbar() {
       const isScrolled = window.scrollY > 40;
       setScrolled(isScrolled);
 
-      const sections = ["home", "purpose", "work", "belief", "impact", "contact"];
+      const sections = ["home", "purpose", "work", "labs", "belief", "presence", "impact", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -62,9 +62,9 @@ export default function Navbar() {
         >
           WORK
         </a>
-        <a 
-          href="#impact" 
-          className={`nav-link ${activeSection === "impact" || activeSection === "belief" ? "active" : ""}`}
+        <a
+          href="#labs"
+          className={`nav-link ${["labs", "belief", "presence", "impact"].includes(activeSection) ? "active" : ""}`}
         >
           LABS
         </a>

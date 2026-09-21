@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function BottomBar() {
   const [scrollProgress, setScrollProgress] = useState(0.05);
+  const [nearFooter, setNearFooter] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
 
@@ -22,6 +23,18 @@ export default function BottomBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const footer = document.querySelector(".site-footer");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setNearFooter(entry.isIntersecting),
+      { rootMargin: "0px 0px -10% 0px" }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email) {
@@ -35,8 +48,9 @@ export default function BottomBar() {
     <aside 
       className="fixed-bottom-bar"
       style={{
-        opacity: scrollProgress,
-        transform: `translateY(${scrollProgress < 0.09 ? '6px' : '0px'})`,
+        opacity: nearFooter ? 0 : scrollProgress,
+        transform: `translateY(${nearFooter ? '10px' : scrollProgress < 0.09 ? '6px' : '0px'})`,
+        pointerEvents: nearFooter ? "none" : "auto",
       }}
       aria-label="Quick subscription bar"
     >

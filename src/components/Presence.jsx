@@ -3,7 +3,7 @@ export default function Presence() {
     <section className="presence" id="presence">
 
       {/* Left content */}
-      <div className="presence-content">
+      <div className="presence-content" data-reveal>
 
         <div className="section-label">
           OUR PRESENCE
@@ -19,18 +19,19 @@ export default function Presence() {
 
 
       {/* Cinematic image */}
-      <div className="presence-image">
+      <div className="presence-image parallax-box" data-reveal>
 
         <img
           src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1800&q=90"
           alt="Earth from space"
+          className="parallax-img"
         />
 
       </div>
 
 
       {/* Areas */}
-      <div className="presence-areas">
+      <div className="presence-areas" data-reveal>
 
         <span>RESEARCH.</span>
         <span>EXPERIMENTS.</span>

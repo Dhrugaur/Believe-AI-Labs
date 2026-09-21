@@ -1,0 +1,905 @@
+/* ==========================================================================
+   BELIEVE AI LABS — SECTION STYLES
+   Purpose · Work · Labs · Belief · Presence · Impact · Contact · Footer · BottomBar
+   Loaded via: import "./components/Sections.css" in App.jsx
+   Shares tokens defined in src/index.css (:root)
+   ========================================================================== */
+
+/* ==========================================================================
+   SHARED SECTION PRIMITIVES
+   ========================================================================== */
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.section-label::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-top: 22px;
+}
+
+.section-accent-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.55);
+  margin-top: 28px;
+}
+
+/* Cinematic image frame used inside grid columns */
+.image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: #000;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+}
+
+.parallax-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-box .parallax-img {
+  position: absolute;
+  inset: -9% 0;
+  width: 100%;
+  height: 118%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Generic multi-column section row wrapper (Purpose / Work / Belief) */
+.section-row {
+  position: relative;
+  width: 100%;
+  padding: clamp(90px, 12vw, 150px) 4vw;
+  background: var(--bg-primary);
+}
+
+/* CTA button — sweep fill, mirrors .join-btn in navbar */
+.cta-sweep-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  padding: 14px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  position: relative;
+  overflow: hidden;
+  width: fit-content;
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.cta-sweep-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 0;
+}
+
+.cta-sweep-button span {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.cta-sweep-button .arrow {
+  transition: transform 0.35s ease;
+}
+
+.cta-sweep-button:hover {
+  color: #101014;
+  border-color: #ffffff;
+}
+
+.cta-sweep-button:hover::before {
+  transform: translateX(0);
+}
+
+.cta-sweep-button:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   PURPOSE  (id="purpose")
+   4-column: heading / description / image / values
+   ========================================================================== */
+
+.purpose-section {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr 0.7fr;
+  gap: 5vw;
+  align-items: start;
+}
+
+.purpose-desc-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 42ch;
+}
+
+.purpose-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+}
+
+.purpose-meta-tags .bullet {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.purpose-col-image .image-frame {
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+}
+
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.value-item {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.value-item:hover {
+  color: var(--text-primary);
+  padding-left: 6px;
+}
+
+/* ==========================================================================
+   WORK  (id="work")
+   3-column: text+CTA / image / numbered process
+   ========================================================================== */
+
+.work-section {
+  background: #0b0c0f;
+  display: grid;
+  grid-template-columns: 0.9fr 1.15fr 0.65fr;
+  gap: 5vw;
+  align-items: center;
+}
+
+.work-desc-text {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 40ch;
+}
+
+.work-col-center .image-frame {
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+}
+
+.process-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.process-item-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.process-item-row:first-child {
+  padding-top: 0;
+}
+
+.process-num {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.process-name {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   LABS  (id="labs")
+   Content block, full-bleed cinematic image, category strip
+   ========================================================================== */
+
+.labs {
+  position: relative;
+  background: var(--bg-primary);
+  padding: clamp(90px, 12vw, 150px) 4vw 0;
+}
+
+.labs-content {
+  max-width: 640px;
+}
+
+.labs-content h2 {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(30px, 4.4vw, 58px);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-top: 22px;
+}
+
+.labs-content p {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 44ch;
+}
+
+.labs-image {
+  margin-top: clamp(50px, 6vw, 90px);
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.labs-areas {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  padding: 30px 0 48px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.small-line {
+  width: 100%;
+  height: 1px;
+  background: var(--border-color);
+  order: -1;
+  margin-bottom: 22px;
+}
+
+/* ==========================================================================
+   BELIEF  (id="belief")
+   3-column: image / quote / supporting text
+   ========================================================================== */
+
+.belief-section {
+  background: #0b0c0f;
+  display: grid;
+  grid-template-columns: 0.8fr 1.3fr 0.75fr;
+  gap: 5vw;
+  align-items: center;
+}
+
+.belief-col-left .image-frame {
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+}
+
+.belief-quote {
+  margin-top: 26px;
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(22px, 2.6vw, 34px);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.belief-supporting-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 32ch;
+}
+
+.belief-mantra {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.belief-mantra span {
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   PRESENCE  (id="presence")
+   Mirrors Labs layout — content, cinematic image, category strip
+   ========================================================================== */
+
+.presence {
+  position: relative;
+  background: var(--bg-primary);
+  padding: clamp(90px, 12vw, 150px) 4vw 0;
+}
+
+.presence-content h2 {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(30px, 4.4vw, 58px);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-top: 22px;
+}
+
+.presence-image {
+  margin-top: clamp(50px, 6vw, 90px);
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.presence-areas {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  padding: 30px 0 48px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.presence-areas .small-line {
+  order: -1;
+}
+
+/* ==========================================================================
+   IMPACT  (id="impact")
+   Metrics row + globe image + closing statement
+   ========================================================================== */
+
+.impact-section {
+  background: #0b0c0f;
+  padding: clamp(90px, 12vw, 150px) 4vw;
+}
+
+.impact-header-row {
+  margin-bottom: clamp(50px, 6vw, 80px);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto) 1fr 1fr;
+  align-items: center;
+  gap: 32px;
+}
+
+.impact-metric-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.impact-number {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(32px, 3.6vw, 52px);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.impact-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.metric-divider {
+  width: 1px;
+  height: 46px;
+  background: var(--border-color);
+  justify-self: center;
+}
+
+.impact-image-col {
+  justify-self: center;
+  width: 100%;
+}
+
+.impact-image-col .image-frame {
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  border-radius: 999px;
+}
+
+.impact-statement-col {
+  justify-self: end;
+}
+
+.impact-statement-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 2px;
+}
+
+.impact-statement-text span {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(15px, 1.5vw, 20px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.impact-statement-text span:last-child {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   CONTACT  (id="contact")
+   Rounded banner card — copy + email form
+   ========================================================================== */
+
+.contact-banner-section {
+  padding: clamp(70px, 9vw, 120px) 4vw;
+  background: var(--bg-primary);
+}
+
+.contact-card-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: clamp(40px, 5vw, 70px) clamp(32px, 5vw, 70px);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: radial-gradient(ellipse at 15% 20%, rgba(100, 145, 175, 0.1) 0%, transparent 55%), #0d0e12;
+}
+
+.card-title {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 36px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.card-subtitle {
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.card-right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.card-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 6px 6px 6px 22px;
+}
+
+.card-email-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 13px;
+  width: 200px;
+}
+
+.card-email-input::placeholder {
+  color: var(--text-muted);
+}
+
+.card-submit-btn {
+  border: none;
+  background: #ffffff;
+  color: #101014;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.card-submit-btn:hover {
+  opacity: 0.85;
+}
+
+.card-or {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.card-talk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 3px;
+  transition: border-color 0.3s ease;
+}
+
+.card-talk-link:hover {
+  border-color: #ffffff;
+}
+
+.card-talk-link .arrow {
+  transition: transform 0.3s ease;
+}
+
+.card-talk-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  background: #0b0c0f;
+  border-top: 1px solid var(--border-color);
+  padding: 48px 4vw 36px;
+}
+
+.footer-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 36px;
+}
+
+.footer-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.footer-nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  transition: color 0.3s ease;
+}
+
+.footer-nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-icon-btn:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   BOTTOM BAR (fixed subscribe pill)
+   ========================================================================== */
+
+.fixed-bottom-bar {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 900;
+  pointer-events: auto;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.bottom-bar-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(16, 16, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.bottom-bar-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7de3a8;
+  box-shadow: 0 0 8px rgba(125, 227, 168, 0.7);
+}
+
+.bottom-bar-label {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.bottom-bar-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bottom-bar-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  border-left: 1px solid var(--border-color);
+  padding-left: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 12px;
+  width: 150px;
+}
+
+.bottom-bar-input::placeholder {
+  color: var(--text-muted);
+}
+
+.bottom-bar-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff;
+  color: #101014;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.bottom-bar-btn:hover {
+  transform: scale(1.06);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+  .purpose-section {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 60px;
+  }
+
+  .work-section {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 50px;
+  }
+
+  .work-col-right {
+    grid-column: span 2;
+  }
+
+  .belief-section {
+    grid-template-columns: 1fr;
+    row-gap: 44px;
+    text-align: center;
+  }
+
+  .belief-col-left .image-frame {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .belief-mantra {
+    align-items: center;
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(2, auto);
+    row-gap: 40px;
+  }
+
+  .impact-image-col,
+  .impact-statement-col {
+    grid-column: span 2;
+    justify-self: start;
+  }
+
+  .impact-statement-text {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .metric-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-row,
+  .labs,
+  .presence,
+  .impact-section,
+  .contact-banner-section {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  .purpose-section,
+  .work-section {
+    grid-template-columns: 1fr;
+  }
+
+  .work-col-right {
+    grid-column: auto;
+  }
+
+  .card-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .card-form {
+    width: 100%;
+  }
+
+  .card-email-input {
+    flex: 1;
+    width: auto;
+  }
+
+  .footer-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 560px) {
+  .fixed-bottom-bar {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .bottom-bar-content {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .bottom-bar-input {
+    width: 100%;
+  }
+
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-image-col,
+  .impact-statement-col {
+    grid-column: auto;
+  }
+}

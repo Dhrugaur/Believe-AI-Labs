@@ -1,10 +1,8 @@
-import React from "react";
-
 export default function Purpose() {
   return (
     <section className="section-row purpose-section" id="purpose">
       {/* Col 1: Heading */}
-      <div className="purpose-col purpose-col-heading">
+      <div className="purpose-col purpose-col-heading" data-reveal>
         <span className="section-label">OUR PURPOSE</span>
         <h2 className="section-title">
           MORE THAN<br />
@@ -16,7 +14,7 @@ export default function Purpose() {
       </div>
 
       {/* Col 2: Description */}
-      <div className="purpose-col purpose-col-description">
+      <div className="purpose-col purpose-col-description" data-reveal>
         <p className="purpose-desc-text">
           Believe AI Labs is a multidisciplinary tech innovation lab where curious minds
           build real solutions. We explore, experiment and create across AI, software,
@@ -33,7 +31,7 @@ export default function Purpose() {
       </div>
 
       {/* Col 3: Silhouette Image Card */}
-      <div className="purpose-col purpose-col-image">
+      <div className="purpose-col purpose-col-image" data-reveal>
         <div className="image-frame parallax-box">
           <img
             src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=90"
@@ -44,7 +42,7 @@ export default function Purpose() {
       </div>
 
       {/* Col 4: Value List */}
-      <div className="purpose-col purpose-col-values">
+      <div className="purpose-col purpose-col-values" data-reveal>
         <div className="values-list cascade-list">
           <span className="value-item">CURIOSITY</span>
           <span className="value-item">COLLABORATION</span>
